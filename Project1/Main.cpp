@@ -15,7 +15,7 @@
 using namespace std;
 
 // CONST FIELDS
-const int ROW = 20;
+const int ROW = 200;
 const char* ws = " \t\n\r\f\v";
 
 // ID for entries, will be incr everytime a new entry is added
@@ -106,30 +106,41 @@ int main()
 // addEntry
 int addEntry(const string& fullName, const string& age, const string& year, const string& major, const string& gpa)
 {
-	for (int i = 0; i < ROW; ++i)
-	{
-		students[i][0] =  ++iD;
-		students[i][1] = fullName;
-		students[i][2] = age;
-		students[i][3] = year;
-		students[i][4] = major;
-		students[i][5] = gpa;
-	}
-	return iD;
+	int row = iD - 1000;
+	
+	students[row][0] = to_string(iD);
+	students[row][1] = fullName;
+	students[row][2] = age;
+	students[row][3] = year;
+	students[row][4] = major;
+	students[row][5] = gpa;
+	
+	return iD++;
 }
 
 // deleteEntry
 bool deleteEntry(int target)
 {
-	for (int i = 0; i < ROW; ++i)
+	bool isFound = false;
+	int index = 0
+	
+	while (!isFound && index < ROW)
 	{
-		if (students[i][0] == target)
+		if (students[index][0] == target)
 		{
-			students[i][0] = "";
-			students[i][1] = "";
+			students[index][0] = "";
+			students[index][1] = "";
+			students[index][2] = "";
+			students[index][3] = "";
+			students[index][4] = "";
+			students[index][5] = "";
+			
+			isFound = true;
 		}
-		sf
+		++index;
 	}
+	
+	return isFound;
 }
 
 // getName
